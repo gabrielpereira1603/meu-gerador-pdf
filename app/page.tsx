@@ -3,7 +3,7 @@
 import React, { useRef, useState } from 'react'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
-import { InvoiceTemplate, InvoiceItem } from '../components/InvoiceTemplate'
+import { InvoiceTemplate, InvoiceItem } from '@/components/InvoiceTemplate'
 
 export default function Page() {
   const refInvoice = useRef<HTMLDivElement>(null)
@@ -28,7 +28,7 @@ export default function Page() {
   const [countryDestination, setCountryDestination] = useState('Portugal')
   const [currency, setCurrency] = useState('EURO')
 
-  const [checkOption, setCheckOption] = useState<'CIF' | 'FOB' | 'C&F'>('CIF')
+  const [checkOption, setCheckOption] = useState<'' | 'CIF' | 'FOB' | 'C&F'>('')
 
   const [items, setItems] = useState<InvoiceItem[]>([
     { qty: '01', description: 'WORK WITH ANIMALS', value: '870,00', total: '870,00' },
@@ -90,10 +90,11 @@ export default function Page() {
         <label className="block">
           <span className="block mb-1">Check One / Assinale uma opção:</span>
           <select
-            className="w-full border border-gray-600 rounded p-2 bg-gray-900"
-            value={checkOption}
-            onChange={e => setCheckOption(e.target.value as any)}
+              className="w-full border border-gray-600 rounded p-2 bg-gray-900"
+              value={checkOption}
+              onChange={e => setCheckOption(e.target.value as any)}
           >
+            <option value="">-- Nenhuma opção --</option>
             <option value="CIF">CIF</option>
             <option value="FOB">FOB</option>
             <option value="C&F">C&amp;F</option>

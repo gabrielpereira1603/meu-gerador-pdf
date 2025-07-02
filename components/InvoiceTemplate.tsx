@@ -7,7 +7,7 @@ export interface InvoiceItem {
   total: string
 }
 
-type CheckOpt = 'CIF' | 'FOB' | 'C&F'
+type CheckOpt = '' | 'CIF' | 'FOB' | 'C&F'
 
 interface Props {
   date: string
